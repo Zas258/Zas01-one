@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>王权业 · 神经元空间</title>
+<meta name="description" content="王权业的个人展示页：一张可以旋转、缩放、点击的 3D 神经网络，每个神经元对应一个主题。">
+<meta name="theme-color" content="#f2f1ee">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f4f3f0'/%3E%3Cpath d='M16 4l10 6v12l-10 6-10-6V10z' fill='none' stroke='%2314161a' stroke-width='1.6'/%3E%3Ccircle cx='16' cy='16' r='3.4' fill='%2314161a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+<a class="skip" href="#net">跳到神经网络</a>
+
+<div class="app">
+  <aside class="rail" aria-label="个人信息与主题导航">
+    <div class="rail__id">
+      <img id="avatar" class="rail__avatar" src="./assets/avatar.svg" alt="王权业" width="84" height="84" decoding="async">
+      <div class="rail__names">
+        <h1 id="nickname" class="rail__name">王权业</h1>
+        <p id="tagline" class="rail__tag">神经元空间 · NEURON SPACE</p>
+      </div>
+    </div>
+
+    <div class="rail__tags" id="railTags" aria-label="兴趣标签"></div>
+
+    <nav class="rail__nav" id="nav" aria-label="主题导航"></nav>
+
+    <div class="rail__meta">
+      <span class="status"><span class="status__dot" aria-hidden="true"></span>SYSTEM ONLINE</span>
+      <span class="rail__actions">
+        <button type="button" class="ghost" id="motionToggle" aria-pressed="true">动效 开</button>
+        <button type="button" class="ghost" id="viewReset">复位视角</button>
+      </span>
+    </div>
+  </aside>
+
+  <main class="stage" id="stage">
+    <canvas id="net" class="stage__canvas" tabindex="0" role="application" aria-describedby="netHelp"></canvas>
+    <p class="sr-only" id="netHelp">3D 神经网络。拖动可以旋转，滚轮或双指可以缩放，点击神经元查看对应内容。键盘操作：左右方向键旋转，上下方向键俯仰，加号减号缩放，数字 1 到 5 打开对应主题，Esc 关闭面板。</p>
+
+    <div class="hud" aria-hidden="true">
+      <span class="hud__label">NEURAL MAP</span>
+      <span class="hud__data"><b id="hudNodes">0</b> NODES · <b id="hudFps">--</b> FPS</span>
+    </div>
+
+    <p class="stage__hint" id="stageHint">拖动旋转 · 滚轮缩放 · 点击神经元</p>
+
+    <div class="tip" id="tip" hidden></div>
+
+    <section class="panel" id="panel" tabindex="-1" role="dialog" aria-labelledby="panelTitle" hidden>
+      <header class="panel__head">
+        <div>
+          <p class="panel__code" id="panelCode"></p>
+          <h2 class="panel__title" id="panelTitle"></h2>
+        </div>
+        <button type="button" class="panel__close" id="panelClose" aria-label="关闭内容面板">✕</button>
+      </header>
+      <p class="panel__lead" id="panelLead"></p>
+      <ul class="chips" id="panelChips"></ul>
+      <div class="items" id="panelItems"></div>
+      <p class="panel__note" id="panelNote"></p>
+      <footer class="panel__foot">
+        <button type="button" class="ghost" id="panelPrev">← 上一个</button>
+        <button type="button" class="ghost" id="panelNext">下一个 →</button>
+      </footer>
+    </section>
+
+    <p class="sr-only" id="live" aria-live="polite"></p>
+
+    <noscript>
+      <div class="noscript">
+        <p>神经网络需要开启 JavaScript 才能显示。</p>
+        <p>基本信息：昵称 王权业；爱好 游戏、硬件；技术探索方向 软件开发、自动化、硬件；社团协作 宣传、设计、技术支持、资金支持。</p>
+      </div>
+    </noscript>
+  </main>
+</div>
+
+<script src="./assets/engine.js"></script>
+<script src="./assets/app.js"></script>
+</body>
+</html>
